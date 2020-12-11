@@ -20,15 +20,15 @@ class ToDo{
     task(){
         console.log(`(v)View ∙ (n)New ∙ (cX)Complete ∙ (dX)Delete ∙ (q)Quit`);
         rl.question('', (line)=>{
-            if(line.toLowerCase() === 'v'){
+            if(line === 'v'){
             return this.view();
-            }else if(line.toLowerCase() === 'n'){
+            }else if(line=== 'n'){
                 return this.add();
-            }else if(line[0].toLowerCase() === 'c' ){
+            }else if(line[0]=== 'c' ){
                 return this.check(line);
-            }else if(line[0].toLowerCase() === 'd' ){
+            }else if(line[0]=== 'd' ){
                 return this.del(line);
-            }else if(line.toLowerCase() === 'q'){
+            }else if(line === 'q'){
                 console.log('See you soon! 😄');
                 rl.close();
             }else{

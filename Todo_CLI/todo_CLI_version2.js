@@ -27,17 +27,17 @@ class ToDo{
     task(){
         console.log(`(v)View ∙ (n)New ∙ (cX)Complete ∙ (dX)Delete ∙ (s)Save ∙ (q)Quit`);
         rl.question('', (line)=>{
-            if(line.toLowerCase() === 'v'){
-            return this.view();
-            }else if(line.toLowerCase() === 'n'){
+            if(line=== 'v'){
+                return this.view();
+            }else if(line === 'n'){
                 return this.add();
-            }else if(line[0].toLowerCase() === 'c' ){
+            }else if(line[0] === 'c' ){
                 return this.check(line);
-            }else if(line[0].toLowerCase() === 'd' ){
+            }else if(line[0]=== 'd' ){
                 return this.del(line);
-            }else if(line[0].toLowerCase() === 's'){
+            }else if(line === 's'){
                 return this.save();
-            }else if(line.toLowerCase() === 'q'){
+            }else if(line === 'q'){
                 console.log('See you soon! 😄');
                 rl.close();
             }else{
@@ -115,7 +115,7 @@ class ToDo{
             set.push(JSON.stringify(jsonValue));
         }
     }
-    return set
+    return '['+set.toString()+']'
     }
 
 //function to get data from JSON file to list in application
@@ -152,13 +152,17 @@ class ToDo{
 
 //function to save the current lists when users call 's'.
     save(){
-        rl.question("where?(myTodos.json)    \n", (path)=>{
-            
-        let data = '['+(this.setData(this.list)).toString()+']';
-        console.log(data);
+        console.log("where?(myTodos.json)/n")
+        rl.question('', (path)=>{
+        //check if myTodos.json exists if not. enter default path to be myTodos.json
+        if(!path){
+            path = TODO_JSON_PATH;
+        }
+        //call setData function to change to JSON form
+        let data = (this.setData(this.list));
+       //call fs Exists and fs writeFile to create new JSON save file or overwrite the old myToDos.json
         fs.exists(TODO_JSON_PATH, (exists)=>{
             if(exists){
-                console.log(`List save to ${TODO_JSON_PATH}`);
                 fs.writeFile(TODO_JSON_PATH, data, (err)=>{
                     if(err){
                         console.log('File cannot be saved! Please try again')
@@ -168,6 +172,7 @@ class ToDo{
                         }
                         this.task();
                     })
+                    //create new file name if the path has been entered
                     }else{
                         fs.writeFile(path, data,(err)=>{
                         if(err){
@@ -182,10 +187,8 @@ class ToDo{
                 }
                 
             })
-    }
-    )
-    this.task();
-    }
+        }
+    )}
 }
 
 
