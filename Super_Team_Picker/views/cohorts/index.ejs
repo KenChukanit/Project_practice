@@ -1,9 +1,22 @@
 <%-include ('../partials/header')%>
 <div class="d-flex flex-row bd-highlight">
 <h1 >Team Picker</h1>
+
 </div>
 
+<%for(let cohort of cohorts){%>
+  <div class="d-flex flex-row">
+    <img src='<%=cohort.logo_url%>' width='80px' height='80px'>
+    <h4><%=cohort.cohort_name%></h6>
 
+    <div class="d-flex justify-content-between">
+    <h6 ><%=cohort.members%></h6>
+    </div>
+    
+    </div>
+    
+    <% }%>
+  
 
 
 

@@ -1,0 +1,48 @@
+<%-include ('../partials/header')%>
+
+<div class='card-img-top mb-4'>
+<h3>
+    <%=cohort.cohort_name%>
+</h3>
+<p>
+    <%=cohort.members%>
+</p>
+</div>
+
+<div>
+    <h4>Method</h4>
+    <div class="custom-control custom-radio">
+        <input type="radio" name="team_count" class="custom-control-input">
+        <label class="custom-control-label">Team Count</label>
+    </div>
+    <div class="custom-control custom-radio">
+        <input type="radio" name="number_per_team" class="custom-control-input">
+        <label class="custom-control-label">Number Per Team</label>
+    </div>
+</div>
+
+
+<form action = '/cohorts/<%=cohort.id%>' method ='POST'>
+    <input type='hidden' name ='_method' value="DELETE">
+    <input
+        type='submit'
+        class = 'btn btn-outline-danger'
+        value='Delete'
+    >
+</form>
+</div>
+<div>
+    <a class='btn btn-outline-success' href='/cohorts/<%=cohort.id%>/edit'>Edit</a>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+<%-include ('../partials/footer')%>
