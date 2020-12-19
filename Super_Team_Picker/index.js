@@ -4,6 +4,7 @@ const path = require('path');
 const cookieParser = require('cookie-parser');
 const methodOverride = require('method-override');
 
+
 app.use(express.static(path.join(__dirname, 'public')));
 
 const logger = require('morgan');

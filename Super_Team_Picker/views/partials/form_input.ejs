@@ -1,0 +1,33 @@
+ <!-- logo_url -->
+ <div class='form-group'>
+    <h4>Logo Url</h4>
+    <input
+    type='text'
+    class='form-control'
+    name='logo_url'
+    placeholder='example http://www.example.com/some.png'
+    value="<%=cohort ? cohort.logo_url : ''%>"
+    >
+</div>
+<!-- cohort name -->
+<div class='form-group'>
+    <h4>Name</h4>
+    <input
+    type='text'
+    class='form-control'
+    name='cohort_name'
+    placeholder='Flying Funks'
+    value="<%=cohort ? cohort.cohort_name : ''%>"
+    >
+</div>
+<!-- picture -->
+<div class='form-group'>
+    <h4>Members</h4>
+    <input
+    type='text'
+    class='form-control'
+    name='members'
+    placeholder='Jon Snow,Daenerys,Melisandre,Arya Stark'
+    value="<%=cohort ? cohort.members : ''%>"
+    >
+</div>

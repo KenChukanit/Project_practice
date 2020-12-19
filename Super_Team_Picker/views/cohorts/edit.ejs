@@ -1,0 +1,17 @@
+
+    <%- include('../partials/header') %>
+    <h3>Edit Cohort</h3>
+    <form action='/cohorts/<%= cohort.id %>' method='POST'>
+      <input type='hidden' name='_method' value='PATCH'>
+
+      <%- include('../partials/form_input') %>
+
+     <div class ="d-flex flex-row-reverse bd-highlight">
+        <input type='submit' value='submit' class='btn btn-outline-success'>
+    </div>
+      </form>
+
+    
+
+
+<%-include ('../partials/footer')%>

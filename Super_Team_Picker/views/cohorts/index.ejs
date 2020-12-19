@@ -1,19 +1,29 @@
 <%-include ('../partials/header')%>
+<main class='container'>
 <div class="d-flex flex-row bd-highlight">
-<h1 >Team Picker</h1>
+<h3 >Team Picker</h3>
 
 </div>
 
 <%for(let cohort of cohorts){%>
-  <div class="d-flex flex-row">
-    <img src='<%=cohort.logo_url%>' width='80px' height='80px'>
-    <h4><%=cohort.cohort_name%></h6>
+  <div class="d-flex justify-content-start">
+    <img class="img-fluid"  src='<%=cohort.logo_url%>' width='60px' height='60px' alt='cohort_logo'>
+</br>
+    <h4><%=cohort.cohort_name%></h4>
+  </div>
+</br>
 
-    <div class="d-flex justify-content-between">
+<div class="card">
+ <div class="card-body">
     <h6 ><%=cohort.members%></h6>
-    </div>
-    
-    </div>
+</div>
+
+</br>
+<div>
+
+    <a class="btn btn-primary btn-sm"  href='/cohorts/<%=cohort.id%>'>Show Cohort</a>
+</div>
+</main>
     
     <% }%>
   

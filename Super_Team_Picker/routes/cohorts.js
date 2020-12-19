@@ -49,9 +49,42 @@ router.post('/',(request,response)=>{
         });
 });
 
+//delete function
+router.delete('/:id',(request,response)=>{
+    knex('cohorts')
+        .where('id', request.params.id)
+        .del()
+        .then(()=>{
+            response.redirect('/cohorts')
+        })
+})
 
+// edit cohort
+router.get('/:id/edit', (request, response) => {
+    knex('cohorts')
+      .where('id', request.params.id)
+      .first()
+      .then(cohort => {
+        response.render('cohorts/edit', { cohort });
+      });
+  });
 
-
+//update function
+router.patch('/:id',(request,response)=>{
+    const logo_url= request.body.logo_url
+    const cohort_name= request.body.cohort_name
+    const members= request.body.members
+    knex('cohorts')
+        .where('id',request.params.id)
+        .update({
+            logo_url,
+            cohort_name,
+            members,
+        })
+        .then(()=>{
+            response.redirect(`/cohorts/${request.params.id}`)
+        })
+})
 
 
 
