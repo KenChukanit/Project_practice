@@ -7,8 +7,6 @@ const methodOverride = require('method-override');
 app.use(express.static(path.join(__dirname, 'public')));
 
 const logger = require('morgan');
-const { response } = require('express');
-const { request } = require('http');
 
 app.set('view engine', 'ejs'); 
 
@@ -24,3 +22,18 @@ app.use(methodOverride((request,response)=>{
 app.use(cookieParser());
 
 app.use(logger('dev')); 
+
+////main index page for team picker app
+app.get(('/'), (request,response)=>{
+    const ONE_DAY = 1000*60*60*24;
+    response.render('main_index');
+})
+
+
+
+
+const ADDRESS = 'localhost'; 
+const PORT = 4545;
+app.listen(PORT, ADDRESS, () => {
+  console.log(`Server is listening on ${ADDRESS}:${PORT}`);
+});
