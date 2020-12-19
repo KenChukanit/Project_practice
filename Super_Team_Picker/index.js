@@ -29,7 +29,9 @@ app.get(('/'), (request,response)=>{
     response.render('main_index');
 })
 
-
+// Set up Router on cohort.js
+const cohortsRouter = require('./routes/cohorts');
+app.use('/cohorts',cohortsRouter);
 
 
 const ADDRESS = 'localhost'; 
