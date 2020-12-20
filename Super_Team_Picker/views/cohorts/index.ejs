@@ -1,40 +1,26 @@
 <%-include ('../partials/header')%>
 <main class='container'>
 <div class="d-flex flex-row bd-highlight">
-<h3 >Team Picker</h3>
-
+  <h3 class="text-primary" >Team Picker</h3>
 </div>
-
+</br>
 <%for(let cohort of cohorts){%>
-  <div class="d-flex justify-content-start">
-    <img class="img-fluid"  src='<%=cohort.logo_url%>' width='60px' height='60px' alt='cohort_logo'>
-</br>
-    <h4><%=cohort.cohort_name%></h4>
-  </div>
-</br>
-
-<div class="card">
- <div class="card-body">
-    <h6 ><%=cohort.members%></h6>
+<div class="d-flex justify-content-start">
+    <div class='card' style="width: 80rem;">  
+        <div class ="d-flex flex-row bd-highlight mr-4">
+          <img class="img-circle"  src='<%=cohort.logo_url%>' width='40px' height='40px' alt='cohort_logo'>
+          <br>
+          <h4><%=cohort.cohort_name%></h4>
+        </div>
+          <div class="card-body mb4">
+            <h6 class="p-2 flex-shrink-1 bd-highlight"><%=cohort.members%></h6>
+          </div>
+            <div>
+              <a class="btn btn-primary btn-sm"  href='/cohorts/<%=cohort.id%>'>Show Cohort</a>
+            </div>
+      </div>
 </div>
-
 </br>
-<div>
-
-    <a class="btn btn-primary btn-sm"  href='/cohorts/<%=cohort.id%>'>Show Cohort</a>
-</div>
+<% }%>
 </main>
-    
-    <% }%>
-  
-
-
-
-
-
-
-
-
-
-
 <%-include ('../partials/footer')%>
