@@ -20,6 +20,9 @@ router.get('/',(request,response)=>{
 
 //Add detail of cohort when adding a new cohort
 router.get('/:id',(request,response)=>{
+    const teamCount = request.query.teamCount
+    const numberPerTeam = request.query.numberPerTeam
+    const quantity = request.query.quantity
     knex('cohorts')
         .where('id', request.params.id)
         .first()
@@ -27,7 +30,40 @@ router.get('/:id',(request,response)=>{
             if(!cohort){
                 response.send('No list found');
             }else{
-                response.render('cohorts/show', {cohort})
+
+            const memberCohort = cohort.members
+            const memberCohortArray = memberCohort.split(',')
+            const numberCohort = memberCohort.split(',').length
+            const randomMemberArray = memberCohortArray;
+            for(let i =0; i<100; i++){
+            let loc1 =Math.floor(Math.random()*randomMemberArray.length);
+            let loc2 =Math.floor(Math.random()*randomMemberArray.length);
+            let tmploc = randomMemberArray[loc1];
+            randomMemberArray[loc1] = randomMemberArray[loc2];
+            randomMemberArray[loc2] = tmploc;
+            }
+            ///Team Count
+            const memberPerTeam = Math.floor(numberCohort/quantity)
+            const extraMember = randomMemberArray.slice(-numberCohort%memberPerTeam)
+            const allTeamArray = [];
+            let singleTeamArray = [];
+            for(let i =1;i<numberCohort+1;i++){
+                if(i%memberPerTeam === 0){
+                    singleTeamArray.push(randomMemberArray[i-1])
+                    allTeamArray.push(singleTeamArray)
+                    singleTeamArray = [];
+                }else{
+                    singleTeamArray.push(randomMemberArray[i-1])
+                }
+                }
+                // }
+
+                // console.log(allTeamArray)
+            
+
+
+                
+                response.render('cohorts/show', {cohort,teamCount,numberPerTeam,quantity,allTeamArray})
             }
         })
 })
