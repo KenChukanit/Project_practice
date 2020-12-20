@@ -9,17 +9,39 @@
 </p>
 </div>
 
+
+
+
+
+
+
+<form action='/cohorts/<%=cohort.id%>'> 
+    
+   
 <div>
     <h4>Method</h4>
     <div class="custom-control custom-radio">
-        <input type="radio" name="team_count" class="custom-control-input">
+        <input type="radio" name="teamCount" method="teamCount" class="custom-control-input">
         <label class="custom-control-label">Team Count</label>
     </div>
     <div class="custom-control custom-radio">
-        <input type="radio" name="number_per_team" class="custom-control-input">
+        <input type="radio" name="numberPerTeam"  method="numberPerTeam" class="custom-control-input">
         <label class="custom-control-label">Number Per Team</label>
     </div>
 </div>
+
+<div class="custom-control custom-radio">
+    <label class="custom-control-label">Quantity</label>
+    <input text="radio" name="quantity" class="custom-control-input">
+</div>
+
+`<input type="submit" value="Assign_Team">
+</form>
+
+
+
+
+
 
 
 <form action = '/cohorts/<%=cohort.id%>' method ='POST'>
