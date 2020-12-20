@@ -31,10 +31,11 @@ router.get('/:id',(request,response)=>{
                 response.send('No list found');
             }else{
 
-            const memberCohort = cohort.members
-            const memberCohortArray = memberCohort.split(',')
-            const numberCohort = memberCohort.split(',').length
-            const randomMemberArray = memberCohortArray;
+            const memberCohort = cohort.members //list of cohort member
+            const memberCohortArray = memberCohort.split(',')//make it to array by taking out ','
+            const numberCohort = memberCohort.split(',').length//number of members
+            let randomMemberArray = memberCohortArray;
+            //Randomly shuffling positions of cohort members 100 times
             for(let i =0; i<100; i++){
             let loc1 =Math.floor(Math.random()*randomMemberArray.length);
             let loc2 =Math.floor(Math.random()*randomMemberArray.length);
@@ -43,27 +44,43 @@ router.get('/:id',(request,response)=>{
             randomMemberArray[loc2] = tmploc;
             }
             ///Team Count
-            const memberPerTeam = Math.floor(numberCohort/quantity)
-            const extraMember = randomMemberArray.slice(-numberCohort%memberPerTeam)
-            const allTeamArray = [];
+            let memberPerTeam = Math.floor(numberCohort/quantity) // Amount of members per team in method of Team Count
+            let numberOfTeam = quantity;
+            let extraMember= randomMemberArray// Extra member in method Team Count
+                                    .slice(numberCohort-numberCohort%memberPerTeam,numberCohort)
+            let selectedMember = randomMemberArray//cut out extra member before assigning team
+                                    .slice(0,numberCohort-(numberCohort%memberPerTeam))
+            ///Number Per Team
+            
+            if(numberPerTeam){ // change value of some variables in case of method Number Per Team
+                memberPerTeam = quantity;
+                numberOfTeam = Math.floor(numberCohort/quantity)
+                selectedMember = randomMemberArray
+                                    .slice(0,numberCohort-(numberCohort%quantity))
+                extraMember = randomMemberArray
+                                    .slice(numberCohort-numberCohort%quantity,numberCohort)
+            }
+            
+            let allTeamArray = [];
             let singleTeamArray = [];
-            for(let i =1;i<numberCohort+1;i++){
+            for(let i =1;i<selectedMember.length+1;i++){
                 if(i%memberPerTeam === 0){
-                    singleTeamArray.push(randomMemberArray[i-1])
+                    singleTeamArray.push(selectedMember[i-1])
                     allTeamArray.push(singleTeamArray)
                     singleTeamArray = [];
                 }else{
-                    singleTeamArray.push(randomMemberArray[i-1])
+                    singleTeamArray.push(selectedMember[i-1])
                 }
-                }
-                // }
-
-                // console.log(allTeamArray)
+            }
+            //recheck in case Team count and assigning too much team 
+            //the member of each team will be one and that is not a team
+         
+            
             
 
 
                 
-                response.render('cohorts/show', {cohort,teamCount,numberPerTeam,quantity,allTeamArray})
+                response.render('cohorts/show', {cohort,teamCount,numberPerTeam,quantity,allTeamArray,extraMember})
             }
         })
 })
