@@ -1,7 +1,7 @@
 <%-include ('../partials/header')%>
 <main class='container'>
 <div class="d-flex flex-row bd-highlight">
-  <h3 class="text-primary" >Team Picker</h3>
+  <h4 class="text-primary" >Team Picker</h4>
 </div>
 </br>
 <%for(let cohort of cohorts){%>
@@ -10,7 +10,7 @@
         <div class ="d-flex flex-row bd-highlight mr-4">
           <img class="img-circle"  src='<%=cohort.logo_url%>' width='40px' height='40px' alt='cohort_logo'>
           <br>
-          <h4><%=cohort.cohort_name%></h4>
+          <h5><%=cohort.cohort_name%></h5>
         </div>
           <div class="card-body mb4">
             <h6 class="p-2 flex-shrink-1 bd-highlight"><%=cohort.members%></h6>
