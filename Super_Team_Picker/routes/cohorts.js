@@ -20,8 +20,7 @@ router.get('/',(request,response)=>{
 
 //Add detail of cohort when adding a new cohort
 router.get('/:id',(request,response)=>{
-    const teamCount = request.query.teamCount
-    const numberPerTeam = request.query.numberPerTeam
+    const method = request.query.method
     const quantity = request.query.quantity
     knex('cohorts')
         .where('id', request.params.id)
@@ -43,7 +42,7 @@ router.get('/:id',(request,response)=>{
             randomMemberArray[loc1] = randomMemberArray[loc2];
             randomMemberArray[loc2] = tmploc;
             }
-            ///Team Count
+            /// Set Default Method as Team Count
             let memberPerTeam = Math.floor(numberCohort/quantity) // Amount of members per team in method of Team Count
             let numberOfTeam = quantity;
             let extraMember= randomMemberArray// Extra member in method Team Count
@@ -52,7 +51,7 @@ router.get('/:id',(request,response)=>{
                                     .slice(0,numberCohort-(numberCohort%memberPerTeam))
             ///Number Per Team
             
-            if(numberPerTeam){ // change value of some variables in case of method Number Per Team
+            if(method ==='numberPerTeam'){ // Change value of some variables if method is Number Per Team
                 memberPerTeam = quantity;
                 numberOfTeam = Math.floor(numberCohort/quantity)
                 selectedMember = randomMemberArray
@@ -80,7 +79,7 @@ router.get('/:id',(request,response)=>{
 
 
                 
-                response.render('cohorts/show', {cohort,teamCount,numberPerTeam,quantity,allTeamArray,extraMember})
+                response.render('cohorts/show', {cohort,method,quantity,allTeamArray,extraMember})
             }
         })
 })
