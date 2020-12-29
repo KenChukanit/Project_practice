@@ -114,12 +114,12 @@ router.delete('/:id',(request,response)=>{
 // edit cohort
 router.get('/:id/edit', (request, response) => {
     knex('cohorts')
-      .where('id', request.params.id)
-      .first()
-      .then(cohort => {
+    .where('id', request.params.id)
+    .first()
+    .then(cohort => {
         response.render('cohorts/edit', { cohort });
-      });
-  });
+    });
+});
 
 //update function
 router.patch('/:id',(request,response)=>{
