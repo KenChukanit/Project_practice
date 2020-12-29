@@ -73,12 +73,12 @@ router.get('/:id',(request,response)=>{
             }
             //recheck in case Team count and assigning too much team 
             //the member of each team will be one and that is not a team
-         
-            
-            
+            // console.log(allTeamArray.length)
+            if(allTeamArray.length > quantity && method === 'teamCount'){
+                extraMember = allTeamArray.slice(quantity,allTeamArray.length)
+                allTeamArray = allTeamArray.slice(0,quantity)
+            }
 
-
-                
                 response.render('cohorts/show', {cohort,method,quantity,allTeamArray,extraMember})
             }
         })
