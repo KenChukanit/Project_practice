@@ -160,7 +160,7 @@ allPoint(){
 }
 // -----------// Stretch1
 // Example
-// node turtle.js t5,5-f10-r-f5-r-f10-r-f5-r-f2-r-f5-l-f2-l-f5
+// node turtle-v2.js t5,5-f10-r-f5-r-f10-r-f5-r-f2-r-f5-l-f2-l-f5
 // node turtle-v2.js f10-r-r-f10-l-f5-l-f10-r-f5-r-f11
 const args = process.argv[2];
 

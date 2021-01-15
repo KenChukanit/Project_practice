@@ -160,19 +160,28 @@ allPoint(){
 }
 // -----------// Stretch2
 // Example
-// $ node --output=drawing.txt f10-r-f10-r-f10-r-f10
-const args = process.argv[2];
+// $ node turtle-v3.js  --output=drawing.txt f10-r-f10-r-f10-r-f10
+// $ node turtle-v3.js  --output=drawing.txt f10-r-r-f10-l-f5-l-f10-r-f5-r-f11
+// $ node turtle-v3.js  --output=drawing.txt t5,5-f10-r-f5-r-f10-r-f5-r-f2-r-f5-l-f2-l-f5
+const args = process.argv[3];// commands string
+let fileName = process.argv[2]
 
+let FILE_NAME = false
+if(fileName .includes('--output=')){
+    fileName = fileName.replace('--output=','');
+    FILE_NAME= fileName;
+}
+// use the same code with turtle version 2
+if(!args){
+    console.log("No command input")};
 
-let allCommand = args.split(' ')
-let savePathArray= allCommand[0].split('=')
-let FILE_NAME = savePathArray[1]
+    let allCommand = args.split('-')
 
-let commandString = allCommand[1]
-let commandArray = commandString.split('-')
-let firstCommand = commandArray[0]
-let restInFirstCommand = firstCommand.slice(1)
-let turtle
+    let firstCommand = allCommand[0]
+    
+    let restInFirstCommand = firstCommand.slice(1)
+    let turtle
+
 //Check validityof raw command and execute first command
 if(firstCommand[0] === "t" && 
 !isNaN(parseInt(firstCommand[1])) && 
@@ -213,7 +222,9 @@ console.log(turtle.allPoint().print())
 
 //Stretch 2 -------------------------
   // Save to file or print
-
+// Example
+// $ node turtle-v3.js --output=drawing.txt f10-r-f10-r-f10-r-f10
+// $ node turtle-v3.js  --output=drawing.txt f10-r-r-f10-l-f5-l-f10-r-f5-r-f11
 
 if (FILE_NAME) {
     fs.writeFile(FILE_NAME, turtle.allPoint().print().toString(), error => {
