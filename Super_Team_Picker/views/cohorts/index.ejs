@@ -1,0 +1,30 @@
+<%-include ('../partials/header')%>
+<main class='container'>
+<div class="d-flex flex-row bd-highlight">
+  <h4 class="text-primary" >Team Picker</h4>
+</div>
+</br>
+<%for(let cohort of cohorts){%>
+<div class="d-flex justify-content-start ">
+    <div class='card' style="width: 80rem;">  
+        <div class ="d-flex flex-row bd-highlight mt-3 mr-3">
+          <span class ="card-title mr-3">
+          <img class="img-circle"  src='<%=cohort.logo_url%>' width='40px' height='40px' alt='cohort_logo'>
+          </span>
+          <br>
+          <span class ="d-flex flex-row bd-highlight ml-3">
+          <h5 ><%=cohort.cohort_name%></h5>
+          </span>
+        </div>
+          <div class="card-body mr-3">
+            <p class="p-2 flex-shrink-1 bd-highlight"><%=cohort.members%></p>
+          </div>
+            <div>
+              <a class="btn btn-primary btn-sm"  href='/cohorts/<%=cohort.id%>'>Show Cohort</a>
+            </div>
+      </div>
+</div>
+</br>
+<% }%>
+</main>
+<%-include ('../partials/footer')%>
