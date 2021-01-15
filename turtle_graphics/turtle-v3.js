@@ -158,17 +158,19 @@ allPoint(){
     return draw;
     }
 }
-// -----------// Stretch
+// -----------// Stretch2
 // Example
-// node turtle.js t5,5-f10-r-f5-r-f10-r-f5-r-f2-r-f5-l-f2-l-f5
-// node turtle_graphic_stretch.js t5,5-f10-r-f5-r-f10-r-f5-r-f2-r-f5-l-f2-l-f5
+// $ node --output=drawing.txt f10-r-f10-r-f10-r-f10
 const args = process.argv[2];
 
-FILE_NAME = "turtle.txt"
-let allCommand = args.split('-')
 
-let firstCommand = allCommand[0]
+let allCommand = args.split(' ')
+let savePathArray= allCommand[0].split('=')
+let FILE_NAME = savePathArray[1]
 
+let commandString = allCommand[1]
+let commandArray = commandString.split('-')
+let firstCommand = commandArray[0]
 let restInFirstCommand = firstCommand.slice(1)
 let turtle
 //Check validityof raw command and execute first command

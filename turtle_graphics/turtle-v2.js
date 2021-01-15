@@ -158,13 +158,12 @@ allPoint(){
     return draw;
     }
 }
-// -----------// Stretch
+// -----------// Stretch1
 // Example
 // node turtle.js t5,5-f10-r-f5-r-f10-r-f5-r-f2-r-f5-l-f2-l-f5
-// node turtle_graphic_stretch.js t5,5-f10-r-f5-r-f10-r-f5-r-f2-r-f5-l-f2-l-f5
+// node turtle-v2.js f10-r-r-f10-l-f5-l-f10-r-f5-r-f11
 const args = process.argv[2];
 
-FILE_NAME = "turtle.txt"
 let allCommand = args.split('-')
 
 let firstCommand = allCommand[0]
@@ -209,16 +208,3 @@ allCommand.reduce((start,command)=>{
 })
 console.log(turtle.allPoint().print())
 
-//Stretch 2 -------------------------
-  // Save to file or print
-
-
-if (FILE_NAME) {
-    fs.writeFile(FILE_NAME, turtle.allPoint().print().toString(), error => {
-    console.log(
-        `🐢 Turtle graphics saved to ${FILE_NAME}`
-    );
-    });
-} else {
-    console.log(turtle.allPoint().print())
-}
