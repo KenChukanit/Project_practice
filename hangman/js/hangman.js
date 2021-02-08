@@ -80,9 +80,10 @@ function updateMistake(){
 function checkGameWon(){
     if(word_status === answer){
         let node = document.getElementById('keyboard')
-        node.className = "text-result"
+        node.className = "text-result";
         node.innerHTML = "You Won";
         victorySound().play();
+        alert("Congratulation! You win!");
     }
     
 }
@@ -93,6 +94,7 @@ function checkGameOver(){
         node.className =  "text-result"
         node.innerHTML = "You Lost";
         loseSound().play();
+        alert("Better luck next time...");
     }
     
 }
