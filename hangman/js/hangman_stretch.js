@@ -40,7 +40,6 @@ function createKeyboard(){
     
 }
 
-
 //function to check if a guess is rigth or wrong
 function handleGuess(choosenLetter){
     //if chosen letter is right -> push the letter in guess.
@@ -128,5 +127,12 @@ chooseProgamming();
 getWord();
 document.getElementById('hangman-pic').src = './images/hngm0.jpg'
 createKeyboard();
+document.addEventListener('keydown',event=>{
+    let choosenLetter = event.key;
+   
+    choosenLetter = choosenLetter.toUpperCase();
+    handleGuess(choosenLetter);
+   
+})
 
 
