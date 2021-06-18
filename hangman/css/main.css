@@ -1,0 +1,87 @@
+body {
+  
+  color: #2c3e50;
+  font-family: "Open Sans", sans-serif;
+  font-size: 16px;
+  margin: 16px;
+  padding: 0;
+  background-image: linear-gradient(to right, #74ebd5 0%, #9face6 100%);
+}
+
+img{
+  padding: 10%;
+  margin: 20px;
+  width: 500px;
+  height: 500px;
+  display: flex;
+  position: relative;
+}
+
+button :not(#reset){
+  width: 20px;
+  height: 35px;
+  display: flex;
+  flex-shrink: 2;
+  align-items: center;
+}
+
+h1 {
+  text-align: center;
+  background-image: linear-gradient(to top, #d9afd9 0%, #97d9e1 100%);
+  color: white;
+  margin: -16px -16px 20px;
+  padding: 13px;
+  text-transform: uppercase;
+}
+
+.text-guess{
+  color: #26962c;
+  font-family: Lobster;
+  font-size: 30px;
+  margin: 15px;
+  padding: 20;
+  position: center;
+  font-size: 40px;
+}
+#text-hint{
+  color: #26962c;
+  font-family: Lobster;
+  font-size: 30px;
+  margin: 15px;
+  padding: 20;
+  position: center;
+  font-size: 22px;
+}
+.text-failure{
+  color: #f55d06;
+  font-family: Lobster;
+  font-size: 25px;
+}
+
+.text-result{
+  color: #f55d06;
+  font-family: Lobster;
+  font-size: 40px;
+}
+
+button {
+  background-color: #f9faf9; 
+  border: 2px black;
+  color: rgb(12, 12, 12);
+  padding: 10px 10px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+}
+
+.button:hover {
+  background-color: #f84903; 
+  color: white;
+} 
+
+.disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  background-color:  #f37340;
+}

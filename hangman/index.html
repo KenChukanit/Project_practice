@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Bootstrap for CDN -->
+  <link rel="stylesheet" href="/css/main.css" />
+  <link rel="shortcut icon" href="#">
+  <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet'  type='text/css'>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <title>Hangman</title>
+</head>
+<body>
+
+<div class="container">
+
+<h1 class="text-center">Hangman</h1> 
+    <div >
+        <div class =' d-flex justify-content-around row mr-2'>
+       
+            <span id="mistake" class="text-failure mr-2">
+                
+            </span>
+          
+            <div class= ''>
+                <button id="reset" class=" btn btn-primary " onClick="reset()">Reset</button>
+            </div>
+    </div>
+    <br>
+    <div class="row mb-5"id="keyboard">
+          
+    </div>
+    <p id='text-hint' class="d-flex text-center" >(Hint! Guess The Programming Langauge)</p>
+    <div class="d-flex flex-row text-center">
+        <div class='d-flex flex-row'>
+            <img id ="hangman-pic" src="" alt="hangman-picture" class="d-flex flex-center ">
+            
+        </div>
+        
+        <p id="word-spotLight" class="text-guess">The words to be guess put here</p>
+       
+    </div>
+  
+
+</div>
+
+
+<script src="js/hangman_stretch.js"></script>
+</body>
+</html>

@@ -77,6 +77,26 @@ router.get('/:id',(request,response)=>{
             if(allTeamArray.length > quantity && method === 'teamCount'){
                 extraMember = allTeamArray.slice(quantity,allTeamArray.length)
                 allTeamArray = allTeamArray.slice(0,quantity)
+                console.log(extraMember)
+                //add extra member to some teams
+                extraMember = extraMember[0];
+                for(let i =0; i<extraMember.length;i++){
+                    allTeamArray[i].push(extraMember[i]);
+                }
+            }
+        //add extra member to some teams
+            if(method === 'numberPerTeam'){
+                console.log(allTeamArray)
+                console.log(extraMember)
+                //add extra member to some teams
+                for(let i =0; i<allTeamArray.length;i++){
+                    allTeamArray[i].push(extraMember[i]);
+                }
+                //if there is still extra member
+                let diff = extraMember.length -allTeamArray.length 
+                for(let i =0; i<diff; i++){
+                    allTeamArray[i].push(extraMember[i+diff+1])
+                }
             }
 
                 response.render('cohorts/show', {cohort,method,quantity,allTeamArray,extraMember})
@@ -87,7 +107,7 @@ router.get('/:id',(request,response)=>{
 //create a new cohort
 router.post('/',(request,response)=>{
     const logo_url= request.body.logo_url
-    const cohort_name= request.body.cohort_name
+    const cohort_name= request.body.cohort_name 
     const members= request.body.members
     knex('cohorts')
         .insert({
